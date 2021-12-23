@@ -21,6 +21,7 @@ import {
 } from './styles';
 import logoImg from '../../assets/logo_martan.png';
 import Input from '../../components/Input';
+import { API_URL } from '../../utils/apiURL';
 
 const LIMIT_OPTIONS = [10, 20, 50];
 
@@ -139,8 +140,7 @@ const ProductsList: React.FC = function ProductsList() {
                 {product.images.map(image => (
                   <img
                     key={image.image_name}
-                    // src={`http://localhost:3333/product/${image.image_name}`}
-                    src="https://cdn.meumoveldemadeira.com.br/fotos-moveis/cama-de-casal-bali-caramelo-1632942201772-73.jpg?ims=fit-in/128x"
+                    src={`${API_URL}/product/${image.image_name}`}
                     alt={product.name}
                   />
                 ))}

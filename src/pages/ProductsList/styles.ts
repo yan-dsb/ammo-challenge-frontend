@@ -78,7 +78,7 @@ export const ProductImages = styled.div`
 `;
 
 export const ProductDetails = styled.div`
-  margin-left: 20px;
+  margin-left: 30px;
 `;
 
 export const ProductName = styled.p``;
