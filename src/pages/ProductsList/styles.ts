@@ -151,6 +151,7 @@ export const PaginationNumber = styled.div`
   right: 0;
   display: flex;
   flex-direction: row;
+  margin-top: 5px;
   button {
     &:disabled {
       border: 1px solid #777777;
@@ -167,6 +168,13 @@ export const PaginationNumber = styled.div`
     margin-left: 2px;
     border-radius: 5px;
   }
+  @media (max-width: 768px) {
+    position: initial;
+    width: 300px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin-left: 20px;
+  }
 `;
 
 export const Divider = styled.div`
@@ -175,9 +183,10 @@ export const Divider = styled.div`
 `;
 
 export const PaginationIcon = styled.div<PaginationIconProps>`
+  cursor: ${props => (props.disabled ? 'unset' : 'pointer')};
+  pointer-events: ${props => (props.disabled ? 'none' : 'all')};
   svg {
     margin: 7px;
-    cursor: pointer;
     color: ${props => (props.disabled ? '#e0dfe3' : '#777777')};
   }
 `;
