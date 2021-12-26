@@ -1,5 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
+import {
+  FiSearch,
+  FiChevronRight,
+  FiChevronLeft,
+  FiChevronsRight,
+  FiChevronsLeft
+} from 'react-icons/fi';
 import { api } from '../../services/api';
 import {
   Container,
@@ -17,7 +23,8 @@ import {
   Divider,
   PaginationContainer,
   Pagination,
-  PaginationNumber
+  PaginationNumber,
+  PaginationIcon
 } from './styles';
 import logoImg from '../../assets/logo_martan.png';
 import Input from '../../components/Input';
@@ -54,7 +61,7 @@ const ProductsList: React.FC = function ProductsList() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [totalProducts, setTotalProducts] = useState(0);
-  const [pagesLength, setPagesLength] = useState<[number]>([0]);
+  const [pagesNumbers, setPagesNumbers] = useState<[number]>([0]);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -89,7 +96,7 @@ const ProductsList: React.FC = function ProductsList() {
           { length: lastPage },
           (v, i) => i
         ) as [number];
-        setPagesLength(paginationLength);
+        setPagesNumbers(paginationLength);
       });
   }, [page, limit, query]);
 
@@ -117,6 +124,22 @@ const ProductsList: React.FC = function ProductsList() {
   const handlePageChange = useCallback((pageNumber: number) => {
     setPage(pageNumber);
   }, []);
+
+  const goToFirstPage = useCallback(() => {
+    setPage(1);
+  }, []);
+
+  const goToPreviousPage = useCallback(() => {
+    setPage(page - 1);
+  }, [page]);
+
+  const goToNextPage = useCallback(() => {
+    setPage(page + 1);
+  }, [page]);
+
+  const goToLastPage = useCallback(() => {
+    setPage(pagesNumbers.length);
+  }, [pagesNumbers]);
 
   return (
     <Container>
@@ -178,7 +201,13 @@ const ProductsList: React.FC = function ProductsList() {
               ))}
             </select>
             <PaginationNumber>
-              {pagesLength.map(number => {
+              <PaginationIcon disabled={page === 1} onClick={goToFirstPage}>
+                <FiChevronsLeft />
+              </PaginationIcon>
+              <PaginationIcon disabled={page === 1} onClick={goToPreviousPage}>
+                <FiChevronLeft />
+              </PaginationIcon>
+              {pagesNumbers.map(number => {
                 const pageNumber = number + 1;
                 return (
                   <button
@@ -191,6 +220,18 @@ const ProductsList: React.FC = function ProductsList() {
                   </button>
                 );
               })}
+              <PaginationIcon
+                disabled={page === pagesNumbers.length}
+                onClick={goToNextPage}
+              >
+                <FiChevronRight />
+              </PaginationIcon>
+              <PaginationIcon
+                disabled={page === pagesNumbers.length}
+                onClick={goToLastPage}
+              >
+                <FiChevronsRight />
+              </PaginationIcon>
             </PaginationNumber>
           </Pagination>
         </PaginationContainer>

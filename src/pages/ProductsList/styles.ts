@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+type PaginationIconProps = {
+  disabled?: boolean;
+};
+
 export const Container = styled.div``;
 
 export const Header = styled.div`
@@ -168,4 +172,12 @@ export const PaginationNumber = styled.div`
 export const Divider = styled.div`
   border-top: 1px solid #e0dfe3;
   margin: 20px 0;
+`;
+
+export const PaginationIcon = styled.div<PaginationIconProps>`
+  svg {
+    margin: 7px;
+    cursor: pointer;
+    color: ${props => (props.disabled ? '#e0dfe3' : '#777777')};
+  }
 `;
