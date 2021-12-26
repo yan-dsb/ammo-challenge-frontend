@@ -145,9 +145,7 @@ const ProductsList: React.FC = function ProductsList() {
     <Container>
       <Header>
         <img src={logoImg} alt="Logo martan" />
-        <div>
-          <Input icon={FiSearch} value={query} onChange={handleQueryChange} />
-        </div>
+        <Input icon={FiSearch} value={query} onChange={handleQueryChange} />
       </Header>
       <QueryContainer>
         <h1>{query || 'Lista de Produtos'}</h1>

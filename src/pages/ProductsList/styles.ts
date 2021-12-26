@@ -7,6 +7,8 @@ type PaginationIconProps = {
 export const Container = styled.div``;
 
 export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
   padding: 20px 20px;
 
   img {
@@ -15,9 +17,16 @@ export const Header = styled.div`
   }
 
   div {
-    float: right;
     height: 25px;
-    width: 300px;
+    width: 30%;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+
+    div {
+      width: 100%;
+    }
   }
 `;
 
@@ -40,7 +49,7 @@ export const ProductsListContainer = styled.div`
   margin: 50px 200px;
 
   @media (max-width: 768px) {
-    margin: 50px 50px;
+    margin: 30px 30px;
   }
 `;
 
@@ -74,7 +83,7 @@ export const ProductItem = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 200px;
+    height: 100%;
   }
 `;
 
@@ -89,10 +98,14 @@ export const ProductImages = styled.div`
   }
 
   @media (max-width: 768px) {
-    display: block;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    margin-top: 50px;
+    align-items: center;
+    img {
+      width: 50px;
+      margin: 5px;
+    }
   }
 `;
 
