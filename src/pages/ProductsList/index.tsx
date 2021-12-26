@@ -127,7 +127,7 @@ const ProductsList: React.FC = function ProductsList() {
         </div>
       </Header>
       <QueryContainer>
-        <p>{query || 'Lista de Produtos'}</p>
+        <h1>{query || 'Lista de Produtos'}</h1>
       </QueryContainer>
       <ProductsListContainer>
         <ProductsFound>
@@ -147,7 +147,11 @@ const ProductsList: React.FC = function ProductsList() {
               </ProductImages>
               <ProductDetails>
                 <ProductName>{product.name}</ProductName>
-                <ProductDescription>{product.description}</ProductDescription>
+                <ProductDescription>
+                  {product.description.length > 30
+                    ? `${product.description.substring(0, 30)}...`
+                    : product.description}
+                </ProductDescription>
               </ProductDetails>
               <ProductDiscount>
                 <p>

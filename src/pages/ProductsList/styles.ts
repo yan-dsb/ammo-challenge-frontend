@@ -25,7 +25,7 @@ export const QueryContainer = styled.div`
   border-top: 2px solid #e0dfe3;
   border-bottom: 2px solid #e0dfe3;
 
-  p {
+  h1 {
     margin-left: 20px;
     font-size: 24px;
     color: #433e66;
@@ -34,6 +34,10 @@ export const QueryContainer = styled.div`
 
 export const ProductsListContainer = styled.div`
   margin: 50px 200px;
+
+  @media (max-width: 768px) {
+    margin: 50px 50px;
+  }
 `;
 
 export const ProductsFound = styled.div`
@@ -54,6 +58,7 @@ export const Products = styled.div`
 
 export const ProductItem = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
   border-top: 1px solid #e0dfe3;
@@ -63,22 +68,37 @@ export const ProductItem = styled.div`
   &:last-of-type {
     border-bottom: 1px solid #e0dfe3;
   }
-  position: relative;
+
+  @media (max-width: 768px) {
+    height: 200px;
+  }
 `;
 
 export const ProductImages = styled.div`
   display: flex;
   flex-direction: row;
   height: 100px;
-  width: 400px;
+  width: 35%;
   img {
     width: 100px;
     margin-left: 5px;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
   }
 `;
 
 export const ProductDetails = styled.div`
   margin-left: 30px;
+  width: 30%;
+
+  @media (max-width: 768px) {
+    margin-left: 5px;
+  }
 `;
 
 export const ProductName = styled.p``;
@@ -90,14 +110,15 @@ export const ProductDescription = styled.p`
 `;
 
 export const ProductDiscount = styled.div`
-  position: absolute;
-  right: 0;
   margin-right: 20px;
 
   p {
     span {
       color: #9d9d9d;
     }
+  }
+  @media (max-width: 768px) {
+    margin: 5px;
   }
 `;
 
